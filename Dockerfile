@@ -5,15 +5,11 @@
 
 # Base image to use, this must be set as the first line
 FROM ubuntu:latest
-RUN  apt-get update \
-  && apt-get install -y wget \
-  && rm -rf /var/lib/apt/lists/*
 
-RUN wget -O frp.tar.gz https://github.com/fatedier/frp/releases/download/v0.8.1/frp_0.8.1_linux_386.tar.gz
-RUN tar -xf frp.tar.gz -C /opt
-RUN cd /opt
-RUN mv frp_0.8.1_linux_386 frp
+RUN mkdir -p /opt/frp
 
+COPY frps /opt/frp/frps
+RUN chmod +x /opt/frp/frps
 COPY frps.ini /opt/frp/frps.ini
 
 EXPOSE 4443 4444 80

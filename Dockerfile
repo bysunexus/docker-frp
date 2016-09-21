@@ -14,4 +14,4 @@ COPY frps.ini /opt/frp/frps.ini
 
 EXPOSE 4443 4444 80
 
-ENTRYPOINT ["nohup /opt/frp/frps -c /opt/frp/frps.ini >/dev/null 2>&1 &"]
+ENTRYPOINT ["/opt/frp/frps -c /opt/frp/frps.ini"]
